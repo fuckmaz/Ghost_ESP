@@ -29,6 +29,7 @@ on:
           - CYDMicroUSB
           - CYDDualUSB
           - CYD2USB2.4_Inch
+          - CYD2USB2.4_Inch_C_Varient
           - Waveshare_LCD
           - Crowtech_LCD
       screen_width:
@@ -73,7 +74,7 @@ jobs:
                 exit 1
               fi
               ;;
-            "MarauderV4_FlipperHub"|"MarauderV6_AwokDual"|"AwokMini"|"CYD2USB"|"CYDMicroUSB"|"CYDDualUSB"|"CYD2USB2.4_Inch")
+            "MarauderV4_FlipperHub"|"MarauderV6_AwokDual"|"AwokMini"|"CYD2USB"|"CYDMicroUSB"|"CYDDualUSB"|"CYD2USB2.4_Inch"|"CYD2USB2.4_Inch_C_Varient")
               if [ "${{ github.event.inputs.board_type }}" != "esp32" ]; then
                 echo "Error: ${{ github.event.inputs.display_type }} requires ESP32 board type"
                 exit 1
@@ -141,6 +142,9 @@ jobs:
                 ;;
               "CYD2USB2.4_Inch")
                 cp "configs/sdkconfig.CYD2USB2.4Inch" sdkconfig.defaults
+                ;;
+              "CYD2USB2.4_Inch_C_Varient")
+                cp "configs/sdkconfig.CYD2USB2.4Inch_C_Varient" sdkconfig.defaults
                 ;;
               "Waveshare_LCD")
                 cp "configs/sdkconfig.waveshare7inch" sdkconfig.defaults
